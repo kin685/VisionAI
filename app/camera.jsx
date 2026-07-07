@@ -1,12 +1,13 @@
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { useRouter } from "expo-router"; // add this import at the top
+import { useRouter } from "expo-router";
 import { useRef, useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
-  const cameraRef = useRef < CameraView > null;
-  const [photo, setPhoto] = (useState < string) | (null > null);
+  const cameraRef = useRef(null);
+  const [photo, setPhoto] = useState(null);
+  const router = useRouter();
 
   // Still loading permission status
   if (!permission) {
@@ -30,10 +31,6 @@ export default function CameraScreen() {
     );
   }
 
-  // ...inside the component, add:
-  const router = useRouter();
-
-  // ...replace takePicture with:
   async function takePicture() {
     if (!cameraRef.current) return;
     const result = await cameraRef.current.takePictureAsync({ quality: 0.7 });
