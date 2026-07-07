@@ -10,12 +10,12 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import ViewfinderFrame from "../../components/ViewfinderFrame";
-import { COLORS } from "../../lib/theme";
+import ViewfinderFrame from "../components/ViewfinderFrame";
+import { COLORS } from "../lib/theme";
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
-  const cameraRef = useRef < CameraView > null;
+  const cameraRef = useRef(null);
   const insets = useSafeAreaInsets();
   const router = useRouter();
 
